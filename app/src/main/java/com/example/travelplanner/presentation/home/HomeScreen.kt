@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,6 +22,23 @@ fun HomeScreen() {
         countryEmoji = "🇮🇹",
         startDate = "September 12",
         endDate = "September 18"
+    )
+
+    val trips = listOf(
+        Trip(
+            id = 2,
+            destination = "Paris",
+            countryEmoji = "🇫🇷",
+            startDate = "October 3",
+            endDate = "October 8"
+        ),
+        Trip(
+            id = 3,
+            destination = "Kraków",
+            countryEmoji = "🇵🇱",
+            startDate = "November 12",
+            endDate = "November 15"
+        )
     )
 
     LazyColumn(
@@ -48,6 +66,18 @@ fun HomeScreen() {
 
         item {
             TripCard(trip = nextTrip)
+        }
+
+        item {
+            Text(
+                text = "Your trips"
+            )
+        }
+
+        items(trips) { trip ->
+            TripCard(
+                trip = trip
+            )
         }
     }
 }
